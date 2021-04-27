@@ -48,9 +48,15 @@ public class Movement : MonoBehaviour
         const int rayDistance = 1;
         Debug.DrawRay(rayCastOrigin, direction, Color.red, 0.2f);
         var hit = Physics.Raycast(rayCastOrigin, direction, rayDistance, obstructionsLayer);
+
+        var animInfo = animator.GetCurrentAnimatorStateInfo(0);
         if (hit)
         {
-            animator.SetTrigger(No);
+            if (animInfo.tagHash != No)
+            {
+                animator.SetTrigger(No);
+            }
+
             return;
         }
 
