@@ -193,7 +193,7 @@ ModelImporter:
       name: RobotArmature|Robot_No
       takeName: RobotArmature|Robot_No
       internalID: 0
-      firstFrame: 0
+      firstFrame: 10
       lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
