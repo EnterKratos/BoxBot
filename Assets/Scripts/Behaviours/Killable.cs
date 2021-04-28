@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using StateMachineBehaviours;
+using UnityEngine;
 
 namespace Behaviours
 {
@@ -6,7 +7,6 @@ namespace Behaviours
 	public class Killable : MonoBehaviour
 	{
 		private Animator animator;
-		private static readonly int Dead = Animator.StringToHash("Dead");
 
 		private void Awake()
 		{
@@ -15,7 +15,7 @@ namespace Behaviours
 
 		public void Kill()
 		{
-			animator.SetBool(Dead, true);
+			animator.SetBool((int)RobotAnimatorParameter.Dead, true);
 		}
 	}
 }

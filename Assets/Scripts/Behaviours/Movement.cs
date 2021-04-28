@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using DG.Tweening;
+using StateMachineBehaviours;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,9 +16,6 @@ namespace Behaviours
 
         private PlayerInput playerInput;
         private Animator animator;
-        private static readonly int Walk = Animator.StringToHash("Walk");
-        private static readonly int Unable = Animator.StringToHash("Unable");
-        private static readonly int Dead = Animator.StringToHash("Dead");
         private const string MoveAction = "Move";
 
         private void Awake()
@@ -48,7 +46,8 @@ namespace Behaviours
 
         private void OnMove(InputAction.CallbackContext context)
         {
-            if (animator.GetBool(Dead) || animator.GetBool(Walk))
+            if (animator.GetBool((int)RobotAnimatorParameter.Dead) ||
+                animator.GetBool((int)RobotAnimatorParameter.Walk))
             {
                 return;
             }
@@ -64,13 +63,13 @@ namespace Behaviours
 
             if (!CanMove(targetPosition))
             {
-                if (animator.GetBool(Unable))
+                if (animator.GetBool((int)RobotAnimatorParameter.Unable))
                 {
                     return;
                 }
 
-                animator.SetBool(Unable, true);
-                StartCoroutine(Defer(() => animator.SetBool(Unable, false)));
+                animator.SetBool((int)RobotAnimatorParameter.Unable, true);
+                StartCoroutine(Defer(() => animator.SetBool((int)RobotAnimatorParameter.Unable, false)));
 
                 return;
             }
@@ -100,8 +99,8 @@ namespace Behaviours
         private void Move(Vector3 targetPosition)
         {
             transform.DOMove(targetPosition, duration)
-                .OnStart(() => animator.SetBool(Walk, true))
-                .OnComplete(() => animator.SetBool(Walk, false));
+                .OnStart(() => animator.SetBool((int)RobotAnimatorParameter.Walk, true))
+                .OnComplete(() => animator.SetBool((int)RobotAnimatorParameter.Walk, false));
 
             transform.DOLookAt(targetPosition, duration);
         }
