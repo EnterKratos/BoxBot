@@ -108,11 +108,27 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e0cfe082-ab21-4174-bcc4-886688a9b412
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5e02da27-fe95-4202-8dd5-2c6edc9351c3
+    m_ActionName: Player/Interact[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &6789002511550281809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899310645780957640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 835a16b9496ec1f4f8ae061ad58e546a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8916685303091577178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +142,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 1
+  obstructionsLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1001 &1628857386698110105
 PrefabInstance:
   m_ObjectHideFlags: 0
