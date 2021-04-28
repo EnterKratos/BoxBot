@@ -17,6 +17,7 @@ namespace Behaviours
         private Animator animator;
         private static readonly int Walk = Animator.StringToHash("Walk");
         private static readonly int Unable = Animator.StringToHash("Unable");
+        private static readonly int Dead = Animator.StringToHash("Dead");
         private const string MoveAction = "Move";
 
         private void Awake()
@@ -39,7 +40,7 @@ namespace Behaviours
 
         private void OnActionTriggered(InputAction.CallbackContext context)
         {
-            if (context.action.name == MoveAction)
+            if (context.action.triggered && context.action.name == MoveAction)
             {
                 OnMove(context);
             }
@@ -47,7 +48,7 @@ namespace Behaviours
 
         private void OnMove(InputAction.CallbackContext context)
         {
-            if (!context.action.triggered || animator.GetBool(Walk))
+            if (animator.GetBool(Dead) || animator.GetBool(Walk))
             {
                 return;
             }
