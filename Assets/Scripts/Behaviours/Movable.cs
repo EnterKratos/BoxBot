@@ -9,14 +9,22 @@ namespace Behaviours
 {
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(Animator))]
-    public class Movement : MonoBehaviour
+    public class Movable : MonoBehaviour, IMovable
     {
         public float duration = 1;
         public LayerMask obstructionsLayer;
 
         private PlayerInput playerInput;
         private Animator animator;
+        private Tweener translationTweener;
+        private Tweener rotationTweener;
         private const string MoveAction = "Move";
+
+        public void Stop()
+        {
+            translationTweener?.Kill();
+            rotationTweener?.Kill();
+        }
 
         private void Awake()
         {
@@ -98,11 +106,11 @@ namespace Behaviours
 
         private void Move(Vector3 targetPosition)
         {
-            transform.DOMove(targetPosition, duration)
+            translationTweener = transform.DOMove(targetPosition, duration)
                 .OnStart(() => animator.SetBool((int)RobotAnimatorParameter.Walk, true))
                 .OnComplete(() => animator.SetBool((int)RobotAnimatorParameter.Walk, false));
 
-            transform.DOLookAt(targetPosition, duration);
+            rotationTweener = transform.DOLookAt(targetPosition, duration);
         }
     }
 }
