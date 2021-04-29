@@ -93,15 +93,11 @@ namespace Behaviours
 
         private bool CanMove(Vector3 targetPosition)
         {
-            var position = transform.position;
-            var heading = targetPosition - position;
-            var direction = heading / heading.magnitude;
+            var direction = new Vector3(0, -5, 0);
+            var rayCastOrigin = new Vector3(targetPosition.x, targetPosition.y + 2f, targetPosition.z);
 
-            var rayCastOrigin = new Vector3(position.x, position.y + 0.5f, position.z);
-
-            const int rayDistance = 1;
-            Debug.DrawRay(rayCastOrigin, direction, Color.red, 0.2f);
-            return !Physics.Raycast(rayCastOrigin, direction, rayDistance, obstructionsLayer);
+            Debug.DrawRay(rayCastOrigin, direction, Color.red, 1f);
+            return !Physics.Raycast(rayCastOrigin, direction, direction.magnitude, obstructionsLayer);
         }
 
         private void Move(Vector3 targetPosition)
