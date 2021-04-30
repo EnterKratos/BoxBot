@@ -64,25 +64,42 @@ namespace Behaviours
 
             var position = transform.position;
 
-            var targetPosition = new Vector3(
-                position.x + input.x,
-                position.y,
-                position.z + input.y);
-
-            if (!CanMove(targetPosition))
+            var movement = new Movement
             {
-                if (animator.GetBool((int)RobotAnimatorParameter.Unable))
-                {
-                    return;
-                }
+                BasePosition = position,
+                Direction = input
+            };
 
-                animator.SetBool((int)RobotAnimatorParameter.Unable, true);
-                StartCoroutine(Defer(() => animator.SetBool((int)RobotAnimatorParameter.Unable, false)));
+            var targetPosition = movement.GetDestination(1);
 
+            var canMove = CanMove(targetPosition);
+            var canPush = CanPush(movement, out var pushable);
+
+            if (canMove && pushable == null)
+            {
+                Move(targetPosition);
                 return;
             }
 
-            Move(targetPosition);
+            if (canMove && canPush && pushable != null)
+            {
+                Move(targetPosition);
+                pushable.Push(movement.GetDestination(2), duration);
+                return;
+            }
+
+            Unable();
+        }
+
+        private void Unable()
+        {
+            if (animator.GetBool((int)RobotAnimatorParameter.Unable))
+            {
+                return;
+            }
+
+            animator.SetBool((int)RobotAnimatorParameter.Unable, true);
+            StartCoroutine(Defer(() => animator.SetBool((int)RobotAnimatorParameter.Unable, false)));
         }
 
         private IEnumerator Defer(Action action, float delay = 0.1f)
@@ -93,11 +110,36 @@ namespace Behaviours
 
         private bool CanMove(Vector3 targetPosition)
         {
+            var rayCastDetails = MakeRayCastDetails(targetPosition);
+
+            Debug.DrawRay(rayCastDetails.Origin, rayCastDetails.Direction, Color.red, 1f);
+            return !Physics.Raycast(rayCastDetails.Origin, rayCastDetails.Direction, rayCastDetails.Direction.magnitude, obstructionsLayer);
+        }
+
+        private bool CanPush(Movement movement, out Pushable pushable)
+        {
+            var rayCastDetails = MakeRayCastDetails(movement.GetDestination(1));
+
+            Debug.DrawRay(rayCastDetails.Origin, rayCastDetails.Direction, Color.green, 1f);
+            Physics.Raycast(rayCastDetails.Origin, rayCastDetails.Direction, out var hitInfo, rayCastDetails.Direction.magnitude);
+
+            pushable = hitInfo.collider != null ?
+                hitInfo.collider.gameObject.GetComponent<Pushable>() :
+                null;
+
+            return pushable && pushable.CanPush(MakeRayCastDetails(movement.GetDestination(2)));
+        }
+
+        private static RayCastDetails MakeRayCastDetails(Vector3 targetPosition)
+        {
             var direction = new Vector3(0, -5, 0);
             var rayCastOrigin = new Vector3(targetPosition.x, targetPosition.y + 2f, targetPosition.z);
 
-            Debug.DrawRay(rayCastOrigin, direction, Color.red, 1f);
-            return !Physics.Raycast(rayCastOrigin, direction, direction.magnitude, obstructionsLayer);
+            return new RayCastDetails
+            {
+                Origin = rayCastOrigin,
+                Direction = direction
+            };
         }
 
         private void Move(Vector3 targetPosition)
