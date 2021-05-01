@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Behaviours
 {
-    public class DrawbridgeController : MonoBehaviour, IPressable
+    public class DrawbridgeController : MonoBehaviour, IToggleable
     {
         private Collider collider;
         private Animator animator;
@@ -21,24 +21,9 @@ namespace Behaviours
             collider.enabled = access == 0;
         }
 
-        public void Press()
+        public void Toggle(bool state)
         {
-            Lower();
-        }
-
-        public void Release()
-        {
-            Raise();
-        }
-
-        private void Raise()
-        {
-            animator.SetBool((int)DrawbridgeAnimatorParameter.Lower, false);
-        }
-
-        private void Lower()
-        {
-            animator.SetBool((int)DrawbridgeAnimatorParameter.Lower, true);
+            animator.SetBool((int)DrawbridgeAnimatorParameter.Lower, state);
         }
     }
 }
