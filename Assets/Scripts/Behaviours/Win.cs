@@ -1,10 +1,14 @@
-﻿using StateMachineBehaviours;
+﻿using Cinemachine;
+using StateMachineBehaviours;
 using UnityEngine;
 
 namespace Behaviours
 {
     public class Win : MonoBehaviour
     {
+        public CinemachineVirtualCamera winCam;
+        public int camPriority;
+
         private GameObject player;
         private Animator animator;
 
@@ -22,6 +26,7 @@ namespace Behaviours
             }
 
             animator.SetTrigger((int)RobotAnimatorParameter.Win);
+            winCam.Priority = camPriority;
         }
     }
 }
