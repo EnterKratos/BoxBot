@@ -230,6 +230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9eb979a9de6d24a409db87fe8e7497bc, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9eb979a9de6d24a409db87fe8e7497bc, type: 3}
 --- !u!1 &1899310645780957640 stripped
