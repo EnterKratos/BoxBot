@@ -11,11 +11,13 @@ namespace Behaviours
 
         private GameObject player;
         private Animator animator;
+        private int originalPriority;
 
         private void Awake()
         {
             player = GameObject.FindWithTag("Player");
             animator = player.GetComponent<Animator>();
+            originalPriority = winCam.Priority;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -27,6 +29,16 @@ namespace Behaviours
 
             animator.SetTrigger((int)RobotAnimatorParameter.Win);
             winCam.Priority = camPriority;
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject != player)
+            {
+                return;
+            }
+
+            winCam.Priority = originalPriority;
         }
     }
 }

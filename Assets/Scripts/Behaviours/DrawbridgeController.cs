@@ -7,6 +7,7 @@ namespace Behaviours
     {
         private Collider collider;
         private Animator animator;
+        private Animator barrierAnimator;
 
         private void Awake()
         {
@@ -14,6 +15,7 @@ namespace Behaviours
             collider.enabled = true;
 
             animator = GetComponent<Animator>();
+            barrierAnimator = gameObject.GetLinkedComponent<Animator>();
         }
 
         public void ToggleBridgeAccess(int access)
@@ -24,6 +26,7 @@ namespace Behaviours
         public void Toggle(bool state)
         {
             animator.SetBool((int)DrawbridgeAnimatorParameter.Lower, state);
+            barrierAnimator.SetBool((int)BarrierAnimatorParameter.Lower, state);
         }
     }
 }
