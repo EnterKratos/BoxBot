@@ -110,7 +110,11 @@ namespace Behaviours
 
         private bool CanMove(Vector3 targetPosition)
         {
-            var rayCastDetails = MakeRayCastDetails(targetPosition);
+            var rayCastDetails = new RayCastDetails
+            {
+                Origin = targetPosition.AddY(2f),
+                Direction = new Vector3(0, -5, 0)
+            };
 
             Debug.DrawRay(rayCastDetails.Origin, rayCastDetails.Direction, Color.red, 1f);
             return !Physics.Raycast(rayCastDetails.Origin, rayCastDetails.Direction, rayCastDetails.Direction.magnitude, obstructionsLayer);
@@ -118,7 +122,15 @@ namespace Behaviours
 
         private bool CanPush(Movement movement, out Pushable pushable)
         {
-            var rayCastDetails = MakeRayCastDetails(movement.GetDestination(1));
+            var oneSpace = movement.GetDestination(1).AddY(2f);
+            var twoSpaces = movement.GetDestination(2).AddY(2f);
+            var direction = new Vector3(0, -5, 0);
+
+            var rayCastDetails = new RayCastDetails
+            {
+                Origin = oneSpace,
+                Direction = direction
+            };
 
             Debug.DrawRay(rayCastDetails.Origin, rayCastDetails.Direction, Color.green, 1f);
             Physics.Raycast(rayCastDetails.Origin, rayCastDetails.Direction, out var hitInfo, rayCastDetails.Direction.magnitude);
@@ -127,19 +139,11 @@ namespace Behaviours
                 hitInfo.collider.gameObject.GetComponent<Pushable>() :
                 null;
 
-            return pushable && pushable.CanPush(MakeRayCastDetails(movement.GetDestination(2)));
-        }
-
-        private static RayCastDetails MakeRayCastDetails(Vector3 targetPosition)
-        {
-            var direction = new Vector3(0, -5, 0);
-            var rayCastOrigin = new Vector3(targetPosition.x, targetPosition.y + 2f, targetPosition.z);
-
-            return new RayCastDetails
+            return pushable && pushable.CanPush(new RayCastDetails
             {
-                Origin = rayCastOrigin,
+                Origin = twoSpaces,
                 Direction = direction
-            };
+            });
         }
 
         private void Move(Vector3 targetPosition)
