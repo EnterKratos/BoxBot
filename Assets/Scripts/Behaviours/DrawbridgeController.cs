@@ -5,14 +5,14 @@ namespace Behaviours
 {
     public class DrawbridgeController : MonoBehaviour, IToggleable
     {
-        private Collider collider;
+        private Collider linkedCollider;
         private Animator animator;
         private Animator barrierAnimator;
 
         private void Awake()
         {
-            collider = gameObject.GetLinkedComponent<Collider>();
-            collider.enabled = true;
+            linkedCollider = gameObject.GetLinkedComponent<Collider>();
+            linkedCollider.enabled = true;
 
             animator = GetComponent<Animator>();
             barrierAnimator = gameObject.GetLinkedComponent<Animator>();
@@ -20,7 +20,7 @@ namespace Behaviours
 
         public void ToggleBridgeAccess(int access)
         {
-            collider.enabled = access == 0;
+            linkedCollider.enabled = access == 0;
         }
 
         public void Toggle(bool state)

@@ -6,7 +6,7 @@ namespace Behaviours
     {
         public Transform directionBegin;
         public Transform directionEnd;
-        public GameObject laserPrefab;
+        public Transform rayCastOrigin;
         public float laserSpeed = 0.1f;
         public Transform[] lasers;
 
@@ -25,7 +25,7 @@ namespace Behaviours
         {
             var rayCastDetails = new RayCastDetails
             {
-                Origin = transform.position.AddY(.5f),
+                Origin = rayCastOrigin.position,
                 Direction = (directionEnd.position - directionBegin.position) * rayLength
             };
 
@@ -47,7 +47,7 @@ namespace Behaviours
             {
                 var laserComponent = laser.GetComponent<Laser>();
 
-                laserComponent.Fire(player.transform, laserSpeed, () => playerKillable.Kill());
+                laserComponent.Fire(hit.point, laserSpeed, () => playerKillable.Kill());
             }
         }
     }
