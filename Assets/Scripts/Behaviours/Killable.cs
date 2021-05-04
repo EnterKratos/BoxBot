@@ -18,6 +18,11 @@ namespace Behaviours
 
 		public void Kill()
 		{
+			if (animator.GetBool((int) RobotAnimatorParameter.Dead))
+			{
+				return;
+			}
+
 			movable.Stop();
 			animator.SetBool((int)RobotAnimatorParameter.Dead, true);
 		}

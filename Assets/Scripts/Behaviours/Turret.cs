@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Behaviours
 {
@@ -6,10 +7,14 @@ namespace Behaviours
     {
         public Transform directionBegin;
         public Transform directionEnd;
+        public GameObject laserPrefab;
+        public float laserSpeed = 0.1f;
+        public Transform[] lasers;
 
         private GameObject player;
         private Killable playerKillable;
         private readonly float rayLength = 100f;
+        private bool fired;
 
         private void Awake()
         {
@@ -32,12 +37,19 @@ namespace Behaviours
                 out var hit,
                 rayCastDetails.Direction.magnitude);
 
-            if (!result || hit.collider.gameObject != player)
+            if (fired || !result || hit.collider.gameObject != player)
             {
                 return;
             }
 
-            playerKillable.Kill();
+            fired = true;
+
+            foreach (var laser in lasers)
+            {
+                var laserComponent = laser.GetComponent<Laser>();
+
+                laserComponent.Fire(player.transform, laserSpeed, () => playerKillable.Kill());
+            }
         }
     }
 }
