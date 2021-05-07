@@ -2,7 +2,7 @@
 using StateMachineBehaviours;
 using UnityEngine;
 
-namespace Behaviours
+namespace Behaviours.Menus
 {
     public class MenuIdleTimer : MonoBehaviour
     {
