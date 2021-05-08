@@ -1,6 +1,7 @@
 ﻿using Cinemachine;
 using StateMachineBehaviours;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Behaviours
 {
@@ -8,10 +9,12 @@ namespace Behaviours
     {
         public CinemachineVirtualCamera winCam;
         public int camPriority;
+        public GameObject GoalCanvas;
 
         private GameObject player;
         private Animator animator;
         private int originalPriority;
+        private bool levelComplete;
 
         private void Awake()
         {
@@ -29,6 +32,10 @@ namespace Behaviours
 
             animator.SetTrigger((int)RobotAnimatorParameter.Win);
             winCam.Priority = camPriority;
+            levelComplete = true;
+
+            other.GetComponent<PlayerInput>().enabled = false;
+            GoalCanvas.SetActive(true);
         }
 
         private void OnTriggerExit(Collider other)
@@ -39,6 +46,20 @@ namespace Behaviours
             }
 
             winCam.Priority = originalPriority;
+            levelComplete = false;
+
+            other.GetComponent<PlayerInput>().enabled = true;
+            GoalCanvas.SetActive(false);
+        }
+
+        public void OnSubmit(InputAction.CallbackContext context)
+        {
+            if (!levelComplete || !context.performed)
+            {
+                return;
+            }
+
+            Debug.Log("Submit");
         }
     }
 }

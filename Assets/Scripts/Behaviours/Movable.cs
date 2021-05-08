@@ -14,11 +14,9 @@ namespace Behaviours
         public float duration = 1;
         public LayerMask obstructionsLayer;
 
-        private PlayerInput playerInput;
         private Animator animator;
         private Tweener translationTweener;
         private Tweener rotationTweener;
-        private const string MoveAction = "Move";
 
         public void Stop()
         {
@@ -28,31 +26,10 @@ namespace Behaviours
 
         private void Awake()
         {
-            playerInput = GetComponent<PlayerInput>();
-            playerInput.SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current);
-
             animator = GetComponent<Animator>();
         }
 
-        private void OnEnable()
-        {
-            playerInput.onActionTriggered += OnActionTriggered;
-        }
-
-        private void OnDisable()
-        {
-            playerInput.onActionTriggered -= OnActionTriggered;
-        }
-
-        private void OnActionTriggered(InputAction.CallbackContext context)
-        {
-            if (context.action.triggered && context.action.name == MoveAction)
-            {
-                OnMove(context);
-            }
-        }
-
-        private void OnMove(InputAction.CallbackContext context)
+        public void OnMove(InputAction.CallbackContext context)
         {
             if (animator.GetBool((int)RobotAnimatorParameter.Dead) ||
                 animator.GetBool((int)RobotAnimatorParameter.Walk))
