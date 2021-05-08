@@ -5,16 +5,20 @@ using UnityEngine.InputSystem;
 
 namespace Behaviours.Menus
 {
+    [RequireComponent(typeof(MenuTransitioner))]
     public class MenuController : MonoBehaviour
     {
         public Menu currentMenu;
 
         private Menu[] menus;
+        private MenuTransitioner transitioner;
         private IEnumerable<Menu> OtherMenus => menus.Except(new[] {currentMenu});
+
 
         private void Awake()
         {
             menus = GetComponentsInChildren<Menu>();
+            transitioner = GetComponent<MenuTransitioner>();
         }
 
         private void Start()
@@ -53,6 +57,22 @@ namespace Behaviours.Menus
             }
 
             currentMenu.Submit();
+        }
+
+        public void Back(InputAction.CallbackContext context)
+        {
+            if (!context.performed)
+            {
+                return;
+            }
+
+            if (currentMenu.previousMenu == null)
+            {
+                Application.Quit();
+                return;
+            }
+
+            transitioner.TransitionBack();
         }
     }
 }

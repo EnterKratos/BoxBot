@@ -10,6 +10,9 @@ namespace Behaviours.Menus
         public Material DefaultMaterial;
         public Material SelectedItemMaterial;
 
+        [HideInInspector]
+        public Menu previousMenu;
+
         private LinkedList<MenuItem> menuItems;
         private LinkedListNode<MenuItem> selectedMenuItem;
 
