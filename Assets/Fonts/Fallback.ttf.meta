@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 1a07b3b8c3ebabb4c9d8317303fb436c
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - MAG Font Fallback
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 5c23885ec65f5ca489e8f6ef75e4f7ed, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

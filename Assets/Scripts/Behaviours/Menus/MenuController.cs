@@ -15,12 +15,15 @@ namespace Behaviours.Menus
         private void Awake()
         {
             menus = GetComponentsInChildren<Menu>();
+        }
 
-            currentMenu.gameObject.SetActive(true);
+        private void Start()
+        {
+            currentMenu.Enable();
 
             foreach (var menu in OtherMenus)
             {
-                menu.gameObject.SetActive(false);
+                menu.Disable();
             }
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace Behaviours.Menus
 {
-    public class StartScreenMenuAction : MenuAction
+    public class MenuTransitionMenuAction : MenuAction
     {
         public MenuTransitioner transitioner;
         public Menu targetMenu;

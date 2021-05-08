@@ -13,7 +13,7 @@ namespace Behaviours.Menus
         private LinkedList<MenuItem> menuItems;
         private LinkedListNode<MenuItem> selectedMenuItem;
 
-        private void Start()
+        private void Awake()
         {
             var menuItems = GetComponentsInChildren<MenuItem>();
             foreach (var menuItem in menuItems)
@@ -23,7 +23,10 @@ namespace Behaviours.Menus
 
             this.menuItems = new LinkedList<MenuItem>(menuItems);
             selectedMenuItem = this.menuItems.First;
+        }
 
+        private void Start()
+        {
             if (NoSelection || selectedMenuItem == null || selectedMenuItem.Value == null)
             {
                 return;
@@ -66,6 +69,22 @@ namespace Behaviours.Menus
 
             selectedMenuItem.Value.GetComponent<MenuAction>()
                 ?.Perform();
+        }
+
+        public void Enable()
+        {
+            foreach (var menuItem in menuItems)
+            {
+                menuItem.Enable();
+            }
+        }
+
+        public void Disable()
+        {
+            foreach (var menuItem in menuItems)
+            {
+                menuItem.Disable();
+            }
         }
     }
 }

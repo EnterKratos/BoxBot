@@ -14,9 +14,9 @@ namespace Behaviours.Menus
 
         public void TransitionTo(Menu targetMenu)
         {
-            controller.currentMenu.gameObject.SetActive(false);
+            controller.currentMenu.Disable();
             controller.currentMenu = targetMenu;
-            targetMenu.gameObject.SetActive(true);
+            targetMenu.Enable();
         }
     }
 }

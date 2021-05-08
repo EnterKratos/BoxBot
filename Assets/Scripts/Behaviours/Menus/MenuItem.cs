@@ -5,6 +5,7 @@ namespace Behaviours.Menus
 {
     public class MenuItem : MonoBehaviour
     {
+        public bool ToggleSelf;
         private TMP_Text text;
         private Material defaultMaterial;
         private Material selectedItemMaterial;
@@ -22,12 +23,46 @@ namespace Behaviours.Menus
 
         public void Select()
         {
-            text.fontSharedMaterial = selectedItemMaterial;
+            if (text)
+            {
+                text.fontSharedMaterial = selectedItemMaterial;
+            }
         }
 
         public void Deselect()
         {
-            text.fontSharedMaterial = defaultMaterial;
+            if (text)
+            {
+                text.fontSharedMaterial = defaultMaterial;
+            }
+        }
+
+        public void Enable()
+        {
+            if (ToggleSelf)
+            {
+                gameObject.SetActive(true);
+                return;
+            }
+
+            if (text)
+            {
+                text.enabled = true;
+            }
+        }
+
+        public void Disable()
+        {
+            if (ToggleSelf)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+
+            if (text)
+            {
+                text.enabled = false;
+            }
         }
     }
 }
