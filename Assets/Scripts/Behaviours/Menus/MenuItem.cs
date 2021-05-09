@@ -39,29 +39,25 @@ namespace Behaviours.Menus
 
         public void Enable()
         {
-            if (ToggleSelf)
-            {
-                gameObject.SetActive(true);
-                return;
-            }
-
-            if (text)
-            {
-                text.enabled = true;
-            }
+            ToggleEnabledState(true);
         }
 
         public void Disable()
         {
+            ToggleEnabledState(false);
+        }
+
+        private void ToggleEnabledState(bool state)
+        {
             if (ToggleSelf)
             {
-                gameObject.SetActive(false);
+                gameObject.SetActive(state);
                 return;
             }
 
             if (text)
             {
-                text.enabled = false;
+                text.enabled = state;
             }
         }
     }

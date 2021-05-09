@@ -18,7 +18,7 @@ namespace Behaviours.Menus
 
         private void Awake()
         {
-            var menuItems = GetComponentsInChildren<MenuItem>();
+            var menuItems = GetComponentsInChildren<MenuItem>(true);
             foreach (var menuItem in menuItems)
             {
                 menuItem.StoreMaterials(DefaultMaterial, SelectedItemMaterial);
