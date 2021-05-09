@@ -1,30 +1,14 @@
-﻿using StateMachineBehaviours;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace Behaviours
 {
-	[RequireComponent(typeof(Animator))]
-	[RequireComponent(typeof(IMovable))]
 	public class Killable : MonoBehaviour
 	{
-		private Animator animator;
-		private IMovable movable;
-
-		private void Awake()
-		{
-			animator = GetComponent<Animator>();
-			movable = GetComponent<IMovable>();
-		}
-
+		public UnityEvent OnKill;
 		public void Kill()
 		{
-			if (animator.GetBool((int) RobotAnimatorParameter.Dead))
-			{
-				return;
-			}
-
-			movable.Stop();
-			animator.SetBool((int)RobotAnimatorParameter.Dead, true);
+			OnKill?.Invoke();
 		}
 	}
 }

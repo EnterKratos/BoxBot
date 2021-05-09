@@ -9,7 +9,7 @@ namespace Behaviours
 {
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(Animator))]
-    public class Movable : MonoBehaviour, IMovable
+    public class RobotMovement : MonoBehaviour, IMovable
     {
         public float duration = 1;
         public LayerMask obstructionsLayer;

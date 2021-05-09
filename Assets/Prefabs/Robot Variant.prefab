@@ -118,7 +118,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978863832}
-  m_LocalRotation: {x: 0.00000000901576, y: -0.9795777, z: 0.20106587, w: 0.0000000439241}
+  m_LocalRotation: {x: 0.000000004784797, y: -0.9795777, z: 0.20106587, w: 0.00000002331117}
   m_LocalPosition: {x: 0, y: 1.5, z: 3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -222,6 +222,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28a14fff47c329648adfa99c49be2198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnKill:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1677271368}
+        m_TargetAssemblyTypeName: Behaviours.RobotKill, Assembly-CSharp
+        m_MethodName: OnKill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6787402223086852450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: ed2246c7dc450a841a680a3db3552333, type: 3}
-  m_NotificationBehavior: 3
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -276,7 +291,19 @@ MonoBehaviour:
     m_ActionId: 8d028ab6-9f05-4625-bcdd-860e38242763
     m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Behaviours.LevelComplete, Assembly-CSharp
+        m_MethodName: OnSubmit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: be8cf97f-cca0-4ae1-a98a-fc551ac9b81d
     m_ActionName: UI/Submit[/Keyboard/enter]
   - m_PersistentCalls:
@@ -312,10 +339,14 @@ MonoBehaviour:
     m_ActionId: e0cfe082-ab21-4174-bcc4-886688a9b412
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5e02da27-fe95-4202-8dd5-2c6edc9351c3
+    m_ActionName: Player/Action
+  - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Behaviours.Pusher, Assembly-CSharp
-        m_MethodName: OnPush
+      - m_Target: {fileID: 1677271360}
+        m_TargetAssemblyTypeName: Behaviours.ExitToMainMenu, Assembly-CSharp
+        m_MethodName: OnExit
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -325,8 +356,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 5e02da27-fe95-4202-8dd5-2c6edc9351c3
-    m_ActionName: Player/Action
+    m_ActionId: 5286c339-8d57-45b6-9186-f8c43cfe1743
+    m_ActionName: Player/Exit[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1677271361}
+        m_TargetAssemblyTypeName: Behaviours.LevelReset, Assembly-CSharp
+        m_MethodName: OnReset
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d3253ed9-7298-4699-bcd3-9a2fc20a7951
+    m_ActionName: Player/Reset[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -348,6 +395,42 @@ MonoBehaviour:
   obstructionsLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &1677271360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899310645780957640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fab43a7c3f593e4f89f6fdfdc13dcd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1677271361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899310645780957640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d164e48f95fadf846ad0e0817c79aa43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1677271368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899310645780957640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f24efee0543a4a74824d5cc451f2b14b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1628857386698110105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -357,7 +440,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9eb979a9de6d24a409db87fe8e7497bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9eb979a9de6d24a409db87fe8e7497bc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -365,7 +448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9eb979a9de6d24a409db87fe8e7497bc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9eb979a9de6d24a409db87fe8e7497bc, type: 3}
       propertyPath: m_LocalRotation.x
