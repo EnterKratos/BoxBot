@@ -449,7 +449,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 621.2, y: -0.0000038146973}
+  m_AnchoredPosition: {x: 621.2, y: -12.71}
   m_SizeDelta: {x: 415.9, y: 35.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1117951507
@@ -737,6 +737,7 @@ MonoBehaviour:
   GlobalAction: {fileID: 1188029385}
   DefaultMaterial: {fileID: 0}
   SelectedItemMaterial: {fileID: 0}
+  previousMenu: {fileID: 0}
 --- !u!114 &1188029385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1109,7 +1110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1520927022
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1189,7 +1190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 411, y: 0.000015259}
+  m_AnchoredPosition: {x: 411, y: -12.34}
   m_SizeDelta: {x: 206.28394, y: 34.48304}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1616802592
@@ -1326,7 +1327,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -285, y: -54}
+  m_AnchoredPosition: {x: -285, y: -47.94}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1617803645
@@ -1401,7 +1402,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 411, y: 0.0000076294}
+  m_AnchoredPosition: {x: 411, y: -6.5}
   m_SizeDelta: {x: 206.28394, y: 34.48304}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1873698646
@@ -1796,6 +1797,7 @@ MonoBehaviour:
   GlobalAction: {fileID: 0}
   DefaultMaterial: {fileID: -6863711111810332037, guid: c7cf31ca5eca59e4ba3713f4d197f1c7, type: 2}
   SelectedItemMaterial: {fileID: 2100000, guid: 6ca119e5d16cfde4ab221ca2aec977aa, type: 2}
+  previousMenu: {fileID: 0}
 --- !u!1 &3999662555487086270
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,6 +2311,7 @@ MonoBehaviour:
   GlobalAction: {fileID: 418161715}
   DefaultMaterial: {fileID: -6863711111810332037, guid: c7cf31ca5eca59e4ba3713f4d197f1c7, type: 2}
   SelectedItemMaterial: {fileID: 2100000, guid: 6ca119e5d16cfde4ab221ca2aec977aa, type: 2}
+  previousMenu: {fileID: 0}
 --- !u!114 &418161715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2501,7 +2504,19 @@ MonoBehaviour:
     m_ActionId: be8cf97f-cca0-4ae1-a98a-fc551ac9b81d
     m_ActionName: UI/Submit[/Keyboard/enter]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3999662556367609607}
+        m_TargetAssemblyTypeName: Behaviours.Menus.MenuController, Assembly-CSharp
+        m_MethodName: Back
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 8fb82e04-5802-4e82-92ee-6a5c0d1229db
     m_ActionName: UI/Cancel[/Keyboard/escape]
   - m_PersistentCalls:
@@ -2536,6 +2551,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5286c339-8d57-45b6-9186-f8c43cfe1743
     m_ActionName: Player/Exit[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d3253ed9-7298-4699-bcd3-9a2fc20a7951
+    m_ActionName: Player/Reset[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: UI
