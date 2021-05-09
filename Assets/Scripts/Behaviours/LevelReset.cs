@@ -6,9 +6,9 @@ namespace Behaviours
 {
     public class LevelReset : MonoBehaviour
     {
-        private void Update()
+        public void OnReset(InputAction.CallbackContext context)
         {
-            if (!Keyboard.current.rKey.wasReleasedThisFrame)
+            if (!context.performed)
             {
                 return;
             }
