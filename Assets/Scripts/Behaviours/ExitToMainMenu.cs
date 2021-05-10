@@ -13,7 +13,7 @@ namespace Behaviours
                 return;
             }
 
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene((int)Scene.MainMenu);
         }
     }
 }

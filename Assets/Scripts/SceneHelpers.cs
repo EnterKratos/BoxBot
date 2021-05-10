@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public enum Scene
 {
-    MainMenu = 0,
-    Level1 = 1
+    PreLoad = 0,
+    MainMenu = 1,
+    Level1 = 2
 }
 
 public static class SceneHelpers
