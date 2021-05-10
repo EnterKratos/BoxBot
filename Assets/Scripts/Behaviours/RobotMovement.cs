@@ -31,6 +31,11 @@ namespace Behaviours
 
         public void OnMove(InputAction.CallbackContext context)
         {
+            if (!context.performed)
+            {
+                return;
+            }
+
             if (animator.GetBool((int)RobotAnimatorParameter.Dead) ||
                 animator.GetBool((int)RobotAnimatorParameter.Walk))
             {
