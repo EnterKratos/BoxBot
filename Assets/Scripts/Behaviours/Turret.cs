@@ -8,6 +8,7 @@ namespace Behaviours
         public Transform directionEnd;
         public Transform rayCastOrigin;
         public float laserSpeed = 0.1f;
+        public AudioSource laserSound;
         public Transform[] lasers;
 
         private GameObject player;
@@ -42,6 +43,8 @@ namespace Behaviours
             }
 
             fired = true;
+
+            laserSound.Play();
 
             foreach (var laser in lasers)
             {

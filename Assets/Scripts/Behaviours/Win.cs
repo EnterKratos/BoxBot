@@ -15,12 +15,14 @@ namespace Behaviours
         private Animator animator;
         private int originalPriority;
         private bool levelComplete;
+        private AudioSource goalAudio;
 
         private void Awake()
         {
             player = GameObject.FindWithTag("Player");
             animator = player.GetComponent<Animator>();
             originalPriority = winCam.Priority;
+            goalAudio = GetComponent<AudioSource>();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -36,6 +38,7 @@ namespace Behaviours
 
             other.GetComponent<PlayerInput>().enabled = false;
             GoalCanvas.SetActive(true);
+            goalAudio.Play();
         }
 
         private void OnTriggerExit(Collider other)
