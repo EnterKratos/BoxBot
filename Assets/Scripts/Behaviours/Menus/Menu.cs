@@ -10,6 +10,8 @@ namespace Behaviours.Menus
         public Material DefaultMaterial;
         public Material SelectedItemMaterial;
         public AudioClip MenuSelection;
+        public AudioClip MenuSubmit;
+        public AudioClip MenuReturn;
 
         [HideInInspector]
         public Menu previousMenu;
@@ -72,6 +74,8 @@ namespace Behaviours.Menus
 
         public void Submit()
         {
+            audioController.Play(MenuSubmit);
+
             if (NoSelection && GlobalAction != null)
             {
                 GlobalAction.Perform();

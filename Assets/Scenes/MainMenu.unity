@@ -406,6 +406,26 @@ PrefabInstance:
       propertyPath: MenuSelection
       value: 
       objectReference: {fileID: 8300000, guid: b64ab72e2bdf9dc48b39b4c820c6461a, type: 3}
+    - target: {fileID: 743280297, guid: 21ffbe8790922954ea5ca5e1c7d97769, type: 3}
+      propertyPath: MenuSubmit
+      value: 
+      objectReference: {fileID: 8300000, guid: bb4f55de09143b84da9689248013144d, type: 3}
+    - target: {fileID: 743280297, guid: 21ffbe8790922954ea5ca5e1c7d97769, type: 3}
+      propertyPath: MenuReturn
+      value: 
+      objectReference: {fileID: 8300000, guid: bb4f55de09143b84da9689248013144d, type: 3}
+    - target: {fileID: 1188029384, guid: 21ffbe8790922954ea5ca5e1c7d97769, type: 3}
+      propertyPath: MenuSubmit
+      value: 
+      objectReference: {fileID: 8300000, guid: bb4f55de09143b84da9689248013144d, type: 3}
+    - target: {fileID: 1188029384, guid: 21ffbe8790922954ea5ca5e1c7d97769, type: 3}
+      propertyPath: MenuReturn
+      value: 
+      objectReference: {fileID: 8300000, guid: bb4f55de09143b84da9689248013144d, type: 3}
+    - target: {fileID: 1780608166, guid: 21ffbe8790922954ea5ca5e1c7d97769, type: 3}
+      propertyPath: MenuSubmit
+      value: 
+      objectReference: {fileID: 8300000, guid: bb4f55de09143b84da9689248013144d, type: 3}
     - target: {fileID: 3999662556367609656, guid: 21ffbe8790922954ea5ca5e1c7d97769, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

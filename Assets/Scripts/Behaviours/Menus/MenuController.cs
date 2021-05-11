@@ -13,6 +13,7 @@ namespace Behaviours.Menus
         private Menu[] menus;
         private MenuTransitioner transitioner;
         private IEnumerable<Menu> OtherMenus => menus.Except(new[] {currentMenu});
+        private AudioController audioController;
 
 
         private void Awake()
@@ -23,6 +24,8 @@ namespace Behaviours.Menus
 
         private void Start()
         {
+            audioController = FindObjectOfType<AudioController>();
+
             currentMenu.Enable();
 
             foreach (var menu in OtherMenus)
@@ -65,6 +68,8 @@ namespace Behaviours.Menus
             {
                 return;
             }
+
+            audioController.Play(currentMenu.MenuReturn);
 
             if (currentMenu.previousMenu == null)
             {
