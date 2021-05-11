@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 436714193}
   - component: {fileID: 8350634533843281045}
   - component: {fileID: 7753055488950236367}
+  - component: {fileID: -271324272712404315}
   m_Layer: 0
-  m_Name: Audio
+  m_Name: AudioController
   m_TagString: Audio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,3 +163,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c995581d7d69d4295743e695098a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scene: 1
+  mode: 1
+--- !u!114 &-271324272712404315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4691570973010545846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d3bda2d6c5a3294f89b35c3fcb97b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolSize: 5

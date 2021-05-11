@@ -9,12 +9,14 @@ namespace Behaviours.Menus
         public MenuAction GlobalAction;
         public Material DefaultMaterial;
         public Material SelectedItemMaterial;
+        public AudioClip MenuSelection;
 
         [HideInInspector]
         public Menu previousMenu;
 
         private LinkedList<MenuItem> menuItems;
         private LinkedListNode<MenuItem> selectedMenuItem;
+        private AudioController audioController;
 
         private void Awake()
         {
@@ -30,6 +32,8 @@ namespace Behaviours.Menus
 
         private void Start()
         {
+            audioController = FindObjectOfType<AudioController>();
+
             if (NoSelection || selectedMenuItem == null || selectedMenuItem.Value == null)
             {
                 return;
@@ -48,6 +52,8 @@ namespace Behaviours.Menus
             selectedMenuItem.Value.Deselect();
             selectedMenuItem = selectedMenuItem.Next ?? selectedMenuItem.List.First;
             selectedMenuItem.Value.Select();
+
+            audioController.Play(MenuSelection);
         }
 
         public void Down()
@@ -60,6 +66,8 @@ namespace Behaviours.Menus
             selectedMenuItem.Value.Deselect();
             selectedMenuItem = selectedMenuItem.Previous ?? selectedMenuItem.List.Last;
             selectedMenuItem.Value.Select();
+
+            audioController.Play(MenuSelection);
         }
 
         public void Submit()
