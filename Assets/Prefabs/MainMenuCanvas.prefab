@@ -693,7 +693,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1188029383}
   - component: {fileID: 1188029384}
-  - component: {fileID: 1188029385}
+  - component: {fileID: 3999662555708131563}
   m_Layer: 5
   m_Name: ControlsMenu
   m_TagString: Untagged
@@ -734,11 +734,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NoSelection: 1
-  GlobalAction: {fileID: 1188029385}
-  DefaultMaterial: {fileID: 0}
+  GlobalAction: {fileID: 3999662555708131563}
+  DefaultMaterial: {fileID: -6863711111810332037, guid: c7cf31ca5eca59e4ba3713f4d197f1c7, type: 2}
   SelectedItemMaterial: {fileID: 0}
+  MenuSelection: {fileID: 0}
+  MenuSubmit: {fileID: 8300000, guid: bb4f55de09143b84da9689248013144d, type: 3}
+  MenuReturn: {fileID: 8300000, guid: bb4f55de09143b84da9689248013144d, type: 3}
   previousMenu: {fileID: 0}
---- !u!114 &1188029385
+--- !u!114 &3999662555708131563
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -747,11 +750,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1188029382}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd1e91cf177b4ae4e93c8575b4d3bce4, type: 3}
+  m_Script: {fileID: 11500000, guid: 07e22243496d70846a0c52e5d6e20df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transitioner: {fileID: 1127913620}
-  targetMenu: {fileID: 743280297}
 --- !u!1 &1214219949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1797,6 +1799,9 @@ MonoBehaviour:
   GlobalAction: {fileID: 0}
   DefaultMaterial: {fileID: -6863711111810332037, guid: c7cf31ca5eca59e4ba3713f4d197f1c7, type: 2}
   SelectedItemMaterial: {fileID: 2100000, guid: 6ca119e5d16cfde4ab221ca2aec977aa, type: 2}
+  MenuSelection: {fileID: 8300000, guid: b64ab72e2bdf9dc48b39b4c820c6461a, type: 3}
+  MenuSubmit: {fileID: 8300000, guid: bb4f55de09143b84da9689248013144d, type: 3}
+  MenuReturn: {fileID: 8300000, guid: bb4f55de09143b84da9689248013144d, type: 3}
   previousMenu: {fileID: 0}
 --- !u!1 &3999662555487086270
 GameObject:
@@ -2311,6 +2316,9 @@ MonoBehaviour:
   GlobalAction: {fileID: 418161715}
   DefaultMaterial: {fileID: -6863711111810332037, guid: c7cf31ca5eca59e4ba3713f4d197f1c7, type: 2}
   SelectedItemMaterial: {fileID: 2100000, guid: 6ca119e5d16cfde4ab221ca2aec977aa, type: 2}
+  MenuSelection: {fileID: 0}
+  MenuSubmit: {fileID: 8300000, guid: bb4f55de09143b84da9689248013144d, type: 3}
+  MenuReturn: {fileID: 0}
   previousMenu: {fileID: 0}
 --- !u!114 &418161715
 MonoBehaviour:
@@ -2341,6 +2349,7 @@ GameObject:
   - component: {fileID: 3999662556367609657}
   - component: {fileID: 3999662556367609607}
   - component: {fileID: 1127913620}
+  - component: {fileID: 3999662555708131560}
   m_Layer: 5
   m_Name: MainMenuCanvas
   m_TagString: Untagged
@@ -2585,6 +2594,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 873c795c51f64fc4f87f1bfcb7ab0775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3999662555708131560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3999662556367609660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5384d2597c3fee409ae020339074a7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagToFind: Audio
+  prefab: {fileID: 4217373247759599176, guid: dacc5835c4584874a8b2d1b3bd672bfb, type: 3}
 --- !u!1 &3999662556743246366
 GameObject:
   m_ObjectHideFlags: 0
