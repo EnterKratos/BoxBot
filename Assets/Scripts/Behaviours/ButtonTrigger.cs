@@ -11,12 +11,14 @@ namespace Behaviours
 
         private Animator animator;
         private IToggleable toggleable;
+        private AudioSource audioSource;
         private Dictionary<int, GameObject> objectsInContact = new Dictionary<int, GameObject>();
 
         private void Awake()
         {
             animator = GetComponent<Animator>();
             toggleable = triggerObject.GetComponent<IToggleable>();
+            audioSource = GetComponent<AudioSource>();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -62,6 +64,7 @@ namespace Behaviours
 
             animator.SetBool((int)ButtonAnimatorParameter.Press, state);
             toggleable.Toggle(state);
+            audioSource.Play();
         }
     }
 }
