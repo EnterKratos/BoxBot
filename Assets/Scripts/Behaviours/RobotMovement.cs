@@ -9,16 +9,15 @@ namespace Behaviours
 {
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(Animator))]
-    [RequireComponent(typeof(AudioSource))]
     public class RobotMovement : MonoBehaviour, IMovable
     {
         public float duration = 1;
         public LayerMask obstructionsLayer;
+        public AudioSource audioSource;
 
         private Animator animator;
         private Tweener translationTweener;
         private Tweener rotationTweener;
-        private AudioSource audioSource;
 
         public void Stop()
         {
@@ -29,7 +28,6 @@ namespace Behaviours
         private void Awake()
         {
             animator = GetComponent<Animator>();
-            audioSource = GetComponent<AudioSource>();
         }
 
         public void OnMove(InputAction.CallbackContext context)

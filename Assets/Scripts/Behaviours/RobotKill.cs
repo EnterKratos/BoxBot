@@ -7,6 +7,8 @@ namespace Behaviours
     [RequireComponent(typeof(IMovable))]
     public class RobotKill : MonoBehaviour
     {
+        public AudioSource audioSource;
+
         private Animator animator;
         private IMovable movable;
 
@@ -25,6 +27,7 @@ namespace Behaviours
 
             movable.Stop();
             animator.SetBool((int)RobotAnimatorParameter.Dead, true);
+            audioSource.Play();
         }
     }
 }
