@@ -9,6 +9,7 @@ namespace Behaviours
 {
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(AudioSource))]
     public class RobotMovement : MonoBehaviour, IMovable
     {
         public float duration = 1;
@@ -17,6 +18,7 @@ namespace Behaviours
         private Animator animator;
         private Tweener translationTweener;
         private Tweener rotationTweener;
+        private AudioSource audioSource;
 
         public void Stop()
         {
@@ -27,6 +29,7 @@ namespace Behaviours
         private void Awake()
         {
             animator = GetComponent<Animator>();
+            audioSource = GetComponent<AudioSource>();
         }
 
         public void OnMove(InputAction.CallbackContext context)
@@ -135,6 +138,8 @@ namespace Behaviours
                 .OnComplete(() => animator.SetBool((int)RobotAnimatorParameter.Walk, false));
 
             rotationTweener = transform.DOLookAt(targetPosition, duration);
+
+            audioSource.Play();
         }
     }
 }
