@@ -3,9 +3,17 @@ using UnityEngine;
 
 namespace Behaviours
 {
+    [RequireComponent(typeof(AudioSource))]
     public class Pushable : MonoBehaviour
     {
         public LayerMask obstructionsLayer;
+
+        private AudioSource audioSource;
+
+        private void Awake()
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
 
         public bool CanPush(RayCastDetails rayCastDetails)
         {
@@ -17,6 +25,7 @@ namespace Behaviours
         public void Push(Vector3 targetPosition, float duration)
         {
             transform.DOMove(targetPosition, duration);
+            audioSource.Play();
         }
     }
 }
