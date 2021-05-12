@@ -8,6 +8,7 @@ namespace Behaviours
         private Collider linkedCollider;
         private Animator animator;
         private Animator barrierAnimator;
+        private AudioSource audioSource;
 
         private void Awake()
         {
@@ -16,6 +17,8 @@ namespace Behaviours
 
             animator = GetComponent<Animator>();
             barrierAnimator = gameObject.GetLinkedComponent<Animator>();
+
+            audioSource = GetComponent<AudioSource>();
         }
 
         public void ToggleBridgeAccess(int access)
@@ -27,6 +30,7 @@ namespace Behaviours
         {
             animator.SetBool((int)DrawbridgeAnimatorParameter.Lower, state);
             barrierAnimator.SetBool((int)BarrierAnimatorParameter.Lower, state);
+            audioSource.Play();
         }
     }
 }
