@@ -4,16 +4,19 @@ namespace Behaviours.Menus
 {
     public class StartMenuAction : MenuAction
     {
-        public Scene scene;
         private bool loadLevel;
         private IEnumerator coroutine;
 
         private void Awake()
         {
+            var save = SaveGameHelpers.Load();
+
             if (coroutine != null)
             {
                 StopCoroutine(coroutine);
             }
+
+            var scene = save?.CurrentLevel ?? Scene.Level1;
 
             coroutine = SceneHelpers.LoadSceneInBackground(scene, () => loadLevel);
             StartCoroutine(coroutine);

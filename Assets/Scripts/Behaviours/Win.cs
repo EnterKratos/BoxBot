@@ -10,6 +10,7 @@ namespace Behaviours
         public CinemachineVirtualCamera winCam;
         public int camPriority;
         public GameObject GoalCanvas;
+        public AudioClip ProgressToNextLevelClip;
 
         private GameObject player;
         private Animator animator;
@@ -19,6 +20,7 @@ namespace Behaviours
         private Scene nextLevel;
         private bool loadNextLevel;
         private PlayerInput menuInput;
+        private AudioController audioController;
 
         private void Awake()
         {
@@ -30,12 +32,22 @@ namespace Behaviours
             menuInput = GoalCanvas.GetComponentInChildren<PlayerInput>(true);
         }
 
+        private void Start()
+        {
+            audioController = FindObjectOfType<AudioController>();
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject != player)
             {
                 return;
             }
+
+            SaveGameHelpers.Save(new SaveGame
+            {
+                CurrentLevel = nextLevel
+            });
 
             StartCoroutine(SceneHelpers.LoadSceneInBackground(nextLevel, () => loadNextLevel));
 
@@ -73,6 +85,8 @@ namespace Behaviours
             {
                 return;
             }
+
+            audioController.Play(ProgressToNextLevelClip);
 
             loadNextLevel = true;
         }

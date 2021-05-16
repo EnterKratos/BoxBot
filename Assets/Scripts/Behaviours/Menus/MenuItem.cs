@@ -5,6 +5,7 @@ namespace Behaviours.Menus
 {
     public class MenuItem : MonoBehaviour
     {
+        public bool NoSelection;
         public bool ToggleSelf;
         private TMP_Text text;
         private Material defaultMaterial;

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Behaviours.Menus
@@ -16,20 +17,22 @@ namespace Behaviours.Menus
         [HideInInspector]
         public Menu previousMenu;
 
-        private LinkedList<MenuItem> menuItems;
+        private MenuItem[] allMenuItems;
+        private LinkedList<MenuItem> selectableMenuItems;
         private LinkedListNode<MenuItem> selectedMenuItem;
         private AudioController audioController;
 
         private void Awake()
         {
-            var menuItems = GetComponentsInChildren<MenuItem>(true);
-            foreach (var menuItem in menuItems)
+            allMenuItems = GetComponentsInChildren<MenuItem>(true);
+
+            foreach (var menuItem in allMenuItems)
             {
                 menuItem.StoreMaterials(DefaultMaterial, SelectedItemMaterial);
             }
 
-            this.menuItems = new LinkedList<MenuItem>(menuItems);
-            selectedMenuItem = this.menuItems.First;
+            selectableMenuItems = new LinkedList<MenuItem>(allMenuItems.Where(menu => !menu.NoSelection));
+            selectedMenuItem = selectableMenuItems.First;
         }
 
         private void Start()
@@ -88,7 +91,7 @@ namespace Behaviours.Menus
 
         public void Enable()
         {
-            foreach (var menuItem in menuItems)
+            foreach (var menuItem in allMenuItems)
             {
                 menuItem.Enable();
             }
@@ -96,7 +99,7 @@ namespace Behaviours.Menus
 
         public void Disable()
         {
-            foreach (var menuItem in menuItems)
+            foreach (var menuItem in allMenuItems)
             {
                 menuItem.Disable();
             }

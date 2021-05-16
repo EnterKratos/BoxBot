@@ -246,6 +246,7 @@ MonoBehaviour:
   winCam: {fileID: 0}
   camPriority: 3
   GoalCanvas: {fileID: 2031014744}
+  ProgressToNextLevelClip: {fileID: 0}
 --- !u!82 &3408273890941924098
 AudioSource:
   m_ObjectHideFlags: 0
@@ -258,7 +259,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 55b6d19d2811b4240ba273d261ec7232, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -946,7 +947,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 08a9ace02cd92ee4a99de1d764273e3a, type: 2}
     - target: {fileID: 919132149155446097, guid: 43be7f07f03f40b41b98c4adaa6c35cb, type: 3}
       propertyPath: m_Name
-      value: Goal
+      value: Goal Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43be7f07f03f40b41b98c4adaa6c35cb, type: 3}
