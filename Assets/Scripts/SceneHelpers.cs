@@ -7,11 +7,17 @@ public enum Scene
 {
     PreLoad = 0,
     MainMenu = 1,
-    Level1 = 2
+    Level1 = 2,
+    Level2 = 3
 }
 
 public static class SceneHelpers
 {
+    public static Scene GetNextScene()
+    {
+        return (Scene)SceneManager.GetActiveScene().buildIndex + 1;
+    }
+
     public static IEnumerator LoadSceneInBackground(Scene scene, Func<bool> waitUntil)
     {
         yield return null;

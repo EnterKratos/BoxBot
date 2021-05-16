@@ -82,13 +82,7 @@ namespace Behaviours
             }
 
             animator.SetBool((int)RobotAnimatorParameter.Unable, true);
-            StartCoroutine(Defer(() => animator.SetBool((int)RobotAnimatorParameter.Unable, false)));
-        }
-
-        private IEnumerator Defer(Action action, float delay = 0.1f)
-        {
-            yield return new WaitForSeconds(delay);
-            action();
+            StartCoroutine(AsyncHelpers.Defer(() => animator.SetBool((int)RobotAnimatorParameter.Unable, false)));
         }
 
         private bool CanMove(Vector3 targetPosition)

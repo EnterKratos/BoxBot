@@ -2570,8 +2570,8 @@ Transform:
   - {fileID: 1244377438}
   - {fileID: 1932620701}
   - {fileID: 1246089288}
-  - {fileID: 1763204401}
   - {fileID: 1480539584}
+  - {fileID: 1763204401}
   m_Father: {fileID: 1490275010}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
