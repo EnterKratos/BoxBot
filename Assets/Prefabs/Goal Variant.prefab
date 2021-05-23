@@ -246,7 +246,7 @@ MonoBehaviour:
   winCam: {fileID: 0}
   camPriority: 3
   GoalCanvas: {fileID: 2031014744}
-  ProgressToNextLevelClip: {fileID: 0}
+  ProgressToNextLevelClip: {fileID: 8300000, guid: bb4f55de09143b84da9689248013144d, type: 3}
 --- !u!82 &3408273890941924098
 AudioSource:
   m_ObjectHideFlags: 0

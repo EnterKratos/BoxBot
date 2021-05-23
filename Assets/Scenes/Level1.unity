@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 978863833, guid: 069fcb283f4529a4198c456f5c34f10a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0000000095687005
+      value: 0.00000000972624
       objectReference: {fileID: 0}
     - target: {fileID: 978863833, guid: 069fcb283f4529a4198c456f5c34f10a, type: 3}
       propertyPath: m_LocalRotation.z
@@ -144,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 978863833, guid: 069fcb283f4529a4198c456f5c34f10a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.000000046617984
+      value: 0.00000004738551
       objectReference: {fileID: 0}
     - target: {fileID: 1229593013388579698, guid: 069fcb283f4529a4198c456f5c34f10a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -684,8 +684,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 315344894}
-  m_LocalRotation: {x: 0.38662803, y: 0.000000025504999, z: -0.000000010692436, w: 0.9222357}
-  m_LocalPosition: {x: 9.432455e-15, y: 5.31, z: -5.3399997}
+  m_LocalRotation: {x: 0.38662803, y: 0.00000002661129, z: -0.000000011156226, w: 0.9222357}
+  m_LocalPosition: {x: 9.432455e-15, y: 5.31, z: -5.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 619639046}
@@ -1897,8 +1897,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.38662803, y: 0.000000025504999, z: -0.000000010692436, w: 0.9222357}
-  m_LocalPosition: {x: 9.432455e-15, y: 5.31, z: -5.3399997}
+  m_LocalRotation: {x: 0.38662803, y: 0.00000002661129, z: -0.000000011156226, w: 0.9222357}
+  m_LocalPosition: {x: 9.432455e-15, y: 5.31, z: -5.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1717297000}
@@ -4137,10 +4137,6 @@ PrefabInstance:
       propertyPath: winCam
       value: 
       objectReference: {fileID: 978863834}
-    - target: {fileID: 8730421863661309990, guid: 89766969f3077934f84560f672c1b206, type: 3}
-      propertyPath: ProgressToNextLevelClip
-      value: 
-      objectReference: {fileID: 8300000, guid: bb4f55de09143b84da9689248013144d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89766969f3077934f84560f672c1b206, type: 3}
 --- !u!4 &806465244199273811 stripped
