@@ -8,7 +8,8 @@ public enum Scene
     PreLoad = 0,
     MainMenu = 1,
     Level1 = 2,
-    Level2 = 3
+    Level2 = 3,
+    Credits = 4
 }
 
 public static class SceneHelpers
