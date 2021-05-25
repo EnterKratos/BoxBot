@@ -10,7 +10,9 @@ public enum Scene
     Level1 = 2,
     Level2 = 3,
     Level3 = 4,
-    Credits = 5
+    Level4 = 5,
+    Level5 = 6,
+    Credits = 7
 }
 
 public static class SceneHelpers

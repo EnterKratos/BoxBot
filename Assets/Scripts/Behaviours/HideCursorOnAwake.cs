@@ -6,7 +6,9 @@ namespace Behaviours
     {
         private void Awake()
         {
+#if !UNITY_EDITOR
             Cursor.visible = false;
+#endif
         }
     }
 }

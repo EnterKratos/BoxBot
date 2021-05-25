@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Behaviours
 {
@@ -15,6 +16,23 @@ namespace Behaviours
         private Killable playerKillable;
         private readonly float rayLength = 100f;
         private bool fired;
+        private bool turretActive = true;
+
+        public void Enable()
+        {
+            turretActive = true;
+        }
+
+        public void Disable(float delay)
+        {
+            StartCoroutine(DisableCoroutine(delay));
+        }
+
+        private IEnumerator DisableCoroutine(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            turretActive = false;
+        }
 
         private void Awake()
         {
@@ -24,6 +42,11 @@ namespace Behaviours
 
         private void Update()
         {
+            if (!turretActive)
+            {
+                return;
+            }
+            
             var rayCastDetails = new RayCastDetails
             {
                 Origin = rayCastOrigin.position,

@@ -7,17 +7,25 @@ namespace Behaviours
 {
     public class ButtonTrigger : MonoBehaviour, IPressable
     {
-        public GameObject triggerObject;
+        public GameObject[] triggerObjects;
 
         private Animator animator;
-        private IToggleable toggleable;
+        private List<IToggleable> toggleables = new List<IToggleable>();
         private AudioSource audioSource;
         private Dictionary<int, GameObject> objectsInContact = new Dictionary<int, GameObject>();
 
         private void Awake()
         {
             animator = GetComponent<Animator>();
-            toggleable = triggerObject.GetComponent<IToggleable>();
+            foreach (var triggerObject in triggerObjects)
+            {
+                var toggleable = triggerObject.GetComponent<IToggleable>();
+                if (toggleable != null)
+                {
+                    toggleables.Add(toggleable);
+                }
+            }
+            
             audioSource = GetComponent<AudioSource>();
         }
 
@@ -63,7 +71,10 @@ namespace Behaviours
             }
 
             animator.SetBool((int)ButtonAnimatorParameter.Press, state);
-            toggleable.Toggle(state);
+            foreach (var toggleable in toggleables)
+            {
+                toggleable.Toggle(state);
+            }
             audioSource.Play();
         }
     }
