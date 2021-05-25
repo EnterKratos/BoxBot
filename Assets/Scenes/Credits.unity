@@ -455,6 +455,7 @@ GameObject:
   - component: {fileID: 1540544475}
   - component: {fileID: 1540544479}
   - component: {fileID: 1540544480}
+  - component: {fileID: 1540544481}
   m_Layer: 5
   m_Name: CreditsCanvas
   m_TagString: Untagged
@@ -550,7 +551,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540544474}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -692,12 +693,28 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540544474}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fab43a7c3f593e4f89f6fdfdc13dcd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   audio: {fileID: 8300000, guid: bb4f55de09143b84da9689248013144d, type: 3}
+--- !u!114 &1540544481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540544474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 372295a46d156b0449d81194158fb5e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Delay: 2.5
+  BehaviourToEnable:
+  - {fileID: 1540544479}
+  - {fileID: 1540544480}
 --- !u!224 &1780608166 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5340659280512582742, guid: 03589d73973df9d4a8446c750cf1d47a, type: 3}

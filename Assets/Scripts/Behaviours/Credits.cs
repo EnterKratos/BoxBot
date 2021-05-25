@@ -14,7 +14,8 @@ namespace Behaviours
 
         public void ResetSave()
         {
-            if (SaveGameHelpers.Load().GameComplete)
+            var save = SaveGameHelpers.Load();
+            if (save != null && save.GameComplete)
             {
                 SaveGameHelpers.ResetSave();
             }
