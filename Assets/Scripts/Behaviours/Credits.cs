@@ -12,6 +12,14 @@ namespace Behaviours
         public float Duration;
         public Ease Ease = Ease.Linear;
 
+        public void ResetSave()
+        {
+            if (SaveGameHelpers.Load().GameComplete)
+            {
+                SaveGameHelpers.ResetSave();
+            }
+        }
+
         private void Awake()
         {
             StartCoroutine(ScrollCredits());
@@ -25,6 +33,7 @@ namespace Behaviours
             tweener.SetEase(Ease);
             tweener.OnComplete(() =>
             {
+                ResetSave();
                 SceneManager.LoadScene((int)Scene.MainMenu);
             });
         }

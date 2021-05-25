@@ -17,9 +17,19 @@ public enum Scene
 
 public static class SceneHelpers
 {
+    public static bool IsFinalScene()
+    {
+        return GetCurrentScene() == Scene.Level5;
+    }
+
+    public static Scene GetCurrentScene()
+    {
+        return (Scene)SceneManager.GetActiveScene().buildIndex;
+    }
+
     public static Scene GetNextScene()
     {
-        return (Scene)SceneManager.GetActiveScene().buildIndex + 1;
+        return GetCurrentScene() + 1;
     }
 
     public static IEnumerator LoadSceneInBackground(Scene scene, Func<bool> waitUntil)

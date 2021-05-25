@@ -86,6 +86,11 @@ namespace Behaviours
                 return;
             }
 
+            if (SceneHelpers.IsFinalScene())
+            {
+                SaveGameHelpers.SaveGameComplete();
+            }
+
             audioController.Play(ProgressToNextLevelClip);
 
             loadNextLevel = true;

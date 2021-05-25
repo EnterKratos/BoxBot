@@ -7,6 +7,7 @@ using UnityEngine;
 public class SaveGame
 {
     public Scene CurrentLevel { get; set; }
+    public bool GameComplete { get; set; }
 }
 
 public static class SaveGameHelpers
@@ -51,7 +52,15 @@ public static class SaveGameHelpers
 
         Save(new SaveGame
         {
-            CurrentLevel = Scene.Level1
+            CurrentLevel = Scene.Level1,
+            GameComplete = false
         });
+    }
+
+    public static void SaveGameComplete()
+    {
+        var save = Load();
+        save.GameComplete = true;
+        Save(save);
     }
 }
