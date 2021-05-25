@@ -82,11 +82,16 @@ namespace Behaviours
             }
 
             animator.SetBool((int)RobotAnimatorParameter.Unable, true);
-            StartCoroutine(AsyncHelpers.Defer(() => animator.SetBool((int)RobotAnimatorParameter.Unable, false)));
+            StartCoroutine(AsyncHelpers.Defer(() => animator.SetBool((int)RobotAnimatorParameter.Unable, false), 1F));
         }
 
         private bool CanMove(Vector3 targetPosition)
         {
+            if (animator.GetBool((int)RobotAnimatorParameter.Unable))
+            {
+                return false;
+            }
+            
             var rayCastDetails = new RayCastDetails
             {
                 Origin = targetPosition.AddY(2f),
