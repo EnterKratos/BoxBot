@@ -11,6 +11,8 @@ namespace Behaviours
         public float laserSpeed = 0.1f;
         public AudioSource laserSound;
         public Transform[] lasers;
+        public AudioSource powerUp;
+        public AudioSource powerDown;
 
         private GameObject player;
         private Killable playerKillable;
@@ -21,10 +23,12 @@ namespace Behaviours
         public void Enable()
         {
             turretActive = true;
+            powerUp.Play();
         }
 
         public void Disable(float delay)
         {
+            powerDown.Play();
             StartCoroutine(DisableCoroutine(delay));
         }
 
